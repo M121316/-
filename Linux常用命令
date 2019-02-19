@@ -1,0 +1,122 @@
+�������
+	pwd 	cd 	ls 	cp 	mv 	rm	 cat 	stat 		
+Ŀ¼��
+		root:                    ��root��
+
+
+	useradd mjq              ����mjq�û�
+	passwd mjq               ��������
+	123456
+	touch f1                 �����ļ�f1����
+	groupadd g1              ����g1��
+	gpasswd -a mjq g1        ��mjq����g1
+	chown  ���û�����:g1 f1   ��f1����g1���۲�g1��f1��Ȩ�ޣ����ı��ļ���ӵ���ߺ������飩
+        mv f1 /home/mjq          ��f1���е�mjq�У�g1��f1�к�Ȩ�ޣ�mjq�Ͷ�f1�к�Ȩ�ޣ�
+	****��root�£�gedit /etc/sudoers  �ҵ�һ���������������mjq
+
+	****************	��mjq��f1���в���	*******************************
+   	****��ͨ��sudo chmod ����f1��g1Ȩ�ޣ�ǰ������root���Ѿ�����mjq<ͨ��gedit sudoers ����>��*****************************
+
+
+	gpasswd -d mjq g1        ��mjqɾ��g1
+	groupdel g1              ɾ��g1
+	userdel -r mjq           ɾ��mjq�û�
+
+
+
+	��ֹȨ�޹���    ������
+	���̴�С df -h    du -sh
+
+	����ʱ�� accesstime
+
+	�Է�Ŀ¼�ļ�rwx���ɶ�����д����ִ��
+	Ŀ¼�ļ�rwx��ls��Ŀ¼����ɾ�ģ�touch��rm��mv��mkdir������������Ŀ¼��cd��
+	����Ȩ��
+��				
+	u+s---�������д�Ȩ�޵�ִ���ļ�������ʹ��ͨ�û���ִ�д������ڼ䣬�������л�Ϊ�ļ�ӵ����
+	du -sh filepath �鿴filepath��Ӧ���ļ���ռ�ô��̿ռ�Ĵ�С
+	df -h
+
+
+�ļ����ͣ�
+	-	regular		��ͨ�ļ�
+				
+	d	directory	Ŀ¼�ļ�
+				
+	c	charactor	�ַ��豸�ļ�
+				
+	b	block		���豸�ļ�
+				
+	l	link		���������ļ�
+				
+	p	pipe		�ܵ��ļ�
+	
+	s	socket		�׽����ļ�
+
+
+
+���ѹ����
+	�ļ�����
+		��1����ִ���ļ���which��whereis
+		��2���ǿ�ִ���ļ���locate filepath���������ݿ⣩��
+				find path ��name��type��size��b/c/k����mtime����ɽ� -exec��-ok��cmd {} \��
+				��������
+	�ļ�ѹ��
+		��1��gzip��.gz��;bzip2(.bz2)
+		(2)tar options xx.tar.xx file....dir..
+			options:-c ����
+				-v ���̿���
+				-f ����󣬺������
+				-j ����bz2ѹ����ʽ
+				-z ����gz��ʽѹ���ļ�
+				-J ����xz��ʽ
+				-x ��ѹ��
+				-C ָ����ѹ·��
+				-t ����ѹ�����������²鿴ѹ����������
+				-r �����׷�����ļ�
+	�ļ��ض���
+		���û���½�ɹ��������ļ����δ򿪣�
+			��׼����(stdin 0) ��׼���(stdout 1) ��׼�������(stderr 2)			
+		0< ��׼�����ض���
+		1> ��׼����ض���
+		2> ��׼��������ض���
+		>> ׷��
+	| �ܵ�
+
+		wc options filepath
+		-l line ͳ��filepath�ļ�������
+		-w word	���ʸ���
+		-c charactor �ַ�����
+		grep -iwn key filepath ---->ɸѡ�ļ����ݣ�iģ�����ң�w��ȷ���ң�n��ʾ�����У�
+	vim�༭����ʹ��:
+		vim filepath---->��--->һ��ģʽ
+		--->����༭ģʽ���б༭(iIaAoOsS)
+		--->�ӱ༭ģʽ����һ��ģʽ(Esc / Ctrl+c)
+		--->��һ��ģʽ����������ģʽ(ð��)(:w���� :q�˳�)
+		һ��ģʽ��:
+			2yy ����2��
+			p	ճ��
+			2dd	����2��
+			u	����
+			Ctrl+r	��ԭ
+			x/X ɾ������ַ�
+			r	�滻
+			R	һֱ�滻��EscΪֹ
+			��ѡ��:
+				ctrl+v �����ѡ��	
+				I / A ������Ӧ����--->Esc Esc
+			gg ����
+			G  ĩ��
+			5G ��5��
+
+		������ģʽ��:
+			:
+			w ����
+			q �˳�
+			q! ǿ���˳�
+			w filepath ����Ϊ
+			saveas filepath ����Ϊ
+			%s/oldstring/newstring/g �����е�oldstring�滻Ϊnewstring
+			2,5s/oldstring/newstring/g ����2�е���5��oldstring�滻Ϊnewstring
+			set nu ��ʾ�к�
+			set ts=4 ��Tab����Ϊ4���ַ�����
